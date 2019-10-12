@@ -1,0 +1,23 @@
+<div id="johnrogar-email-preview-template-parent" style="display: none">
+    <?php /** @var \JohnRogar\MageEmailPreview\Block\Adminhtml\EmailTemplates $block */ ?>
+    <?php if ($block->shouldActivate()): ?>
+        <?php $templates = $block->getTemplates() ?>
+        <label for="johnrogar-email-preview-template">Select a template</label>
+        <select class="admin__control-select" id="johnrogar-email-preview-template"
+                data-preview-url="<?php echo $block->getPreviewUrl() ?>">
+            <option value="">-</option>
+            <?php foreach ($templates as $templateId => $templateLabel): ?>
+                <option value="<?php echo $templateId ?>">
+                    <?php echo $templateLabel ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <button type="button" class="johnrogar-email-preview-template-show">Preview</button>
+        <button type="button" class="johnrogar-email-preview-template-pdf">PDF</button>
+        <hr>
+        <br/>
+        <div class="johnrogar-email-preview-content"></div>
+    <?php else: ?>
+        This functionality is only available in developer mode
+    <?php endif; ?>
+</div>
